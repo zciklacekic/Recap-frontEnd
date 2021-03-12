@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Customer } from 'src/app/models/customer';
+import { CustomerService } from 'src/app/services/customer.service';
 
 @Component({
   selector: 'app-customer',
@@ -6,10 +8,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./customer.component.css']
 })
 export class CustomerComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
+  customers:Customer[]=[];
+  dataLoaded=false;
+  apiUrl='https://localhost:44311/api/customers/getall';
+    constructor(private customerService:CustomerService) { }
+  
+    ngOnInit(): void {
+      this.getCustomers();
+    }
+  getCustomers() {
+    this.customerService.getCustomers().subscribe(response=>{
+      this.customers=response.data
+      this.dataLoaded=true;})
   }
 
 }

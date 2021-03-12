@@ -14,10 +14,9 @@ apiUrl='https://localhost:44311/api/cars/getall';
   constructor(private carService:CarService) { }
 
   ngOnInit(): void {
-    
+    this.getCars();
   }
 getCars() {
-  console.log("Api REquest Basladi")
   this.carService.getCars().subscribe(response=>{
     this.cars=response.data
     this.dataLoaded=true;})
