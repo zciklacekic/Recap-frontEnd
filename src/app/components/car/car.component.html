@@ -1,4 +1,4 @@
-<table *ngIf="dataLoaded != false" class="table">
+<!-- <table *ngIf="dataLoaded != false" class="table">
   <thead>
     <tr>
       <th>Id</th>
@@ -17,4 +17,24 @@
     <td>{{ car.modelYear }}</td>
     <td>{{ car.dailyPrice }}</td>
   </tr>
-</table>
+</table> -->
+<table *ngIf="dataLoaded != false" class="table">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Brand</th>
+        <th>Color</th>
+        <th>Name</th>
+        <!-- <th>Model Year</th> -->
+        <th>DailyPrice</th>
+      </tr>
+    </thead>
+    <tr *ngFor="let carDetail of carDetails">
+      <td>{{ carDetail.carId }}</td>
+      <td>{{ carDetail.brandName }}</td>
+      <td>{{ carDetail.colorName }}</td>
+      <td>{{ carDetail.carName }}</td>
+      <!-- <td>{{ carDetails.modelYear }}</td> -->
+      <td>{{ carDetail.dailyPrice }}</td>
+    </tr>
+  </table>
