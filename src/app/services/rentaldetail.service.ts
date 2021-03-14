@@ -2,16 +2,16 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ListResponseModel } from '../models/listResponseModel';
-import { Rental } from '../models/rental';
+import { RentalDetail } from '../models/rentalDetail';
 
 @Injectable({
   providedIn: 'root'
 })
-export class RentalService {
+export class RentalDetailService {
   apiUrl='https://localhost:44311/api/';
   constructor(private httpClient: HttpClient) { }
-  getRentals():Observable<ListResponseModel<Rental>>{
-    let newApiUrl= this.apiUrl + "rentals/getall"
-    return this.httpClient.get<ListResponseModel<Rental>>(newApiUrl);
+  getRentalDetails():Observable<ListResponseModel<RentalDetail>>{
+    let newApiUrl= this.apiUrl + "rentals/getrentaldetails"
+    return this.httpClient.get<ListResponseModel<RentalDetail>>(newApiUrl);
   }
 }

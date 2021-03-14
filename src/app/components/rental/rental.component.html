@@ -1,4 +1,4 @@
-<table *ngIf="dataLoaded != false" class="table">
+<!-- <table *ngIf="dataLoaded != false" class="table">
     <thead>
       <tr>
         <th>Id</th>
@@ -12,8 +12,25 @@
       <td>{{ rental.id }}</td>
       <td>{{ rental.carId }}</td>
       <td>{{ rental.customerId }}</td>
-      <td>{{ rental.rentDate }}</td>
-      <td>{{ rental.returnDate }}</td>
+      <td>{{ rental.rentDate | date:'dd-MM-YYYY'}}</td>
+      <td>{{ (rental.returnDate== null)? "Not yet delivered!": rental.returnDate | date:'dd-MM-YYYY' }}</td>
+    </tr>
+  </table> -->
+<table *ngIf="dataLoaded != false" class="table">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Brand</th>
+        <th>CustomerName</th>
+        <th>Rent Date</th>
+        <th>Return Date</th>
+      </tr>
+    </thead>
+    <tr *ngFor="let rentalDetail of rentalDetails">
+      <td>{{ rentalDetail.id }}</td>
+      <td>{{ rentalDetail.brandName }}</td>
+      <td>{{ rentalDetail.customerName }}</td>
+      <td>{{ rentalDetail.rentDate | date:'dd-MM-YYYY' }}</td>
+      <td>{{ (rentalDetail.returnDate == null)? "Not yet delivered!": rentalDetail.returnDate | date:'dd-MM-YYYY'}}</td>
     </tr>
   </table>
-
